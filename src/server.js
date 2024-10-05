@@ -1,25 +1,18 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-require("dotenv").config();
-const app = express();
+const configViewEngine = require("./config/viewEngine");
+const webRoutes = require("./routes/web");
 
+const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
 //config template engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+configViewEngine(app);
 
-//config static files
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => {
-  res.send("Hello World Loan with nodemon!");
-});
-
-app.get("/test", (req, res) => {
-  res.render("sample.ejs");
-});
+//declare routes
+app.use("/", webRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
