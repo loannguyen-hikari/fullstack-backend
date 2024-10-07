@@ -9,8 +9,21 @@ const getTestPage = (req, res) => {
 };
 
 const postCreateUser = (req, res) => {
-  console.log("check req.body", req.body);
-  res.send("Create new user");
+  let { email, myname, city } = req.body;
+  console.log("email", email);
+  console.log("name", myname);
+  console.log("city", city);
+
+  connection.query(
+    `INSERT INTO 
+    Users (email, name, city)
+    VALUES (?,?,?)`,
+    [email, myname, city],
+    function (err, results) {
+      console.log(results);
+      res.send("Created user successfully");
+    }
+  );
 };
 
 module.exports = {
