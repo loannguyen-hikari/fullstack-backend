@@ -5,6 +5,15 @@ const getAllUser = async () => {
   return results;
 };
 
+const getUserUpdate = async (userID) => {
+  let [results, fields] = await connection.query(
+    `SELECT * FROM Users where id = ?`,
+    [userID]
+  );
+  return results;
+};
+
 module.exports = {
   getAllUser,
+  getUserUpdate,
 };
