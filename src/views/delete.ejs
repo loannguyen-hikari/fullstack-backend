@@ -1,0 +1,28 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Users</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="form">
+      <form action="/delete-user" method="post">
+        <fieldset>
+          <legend>Delete a user</legend>
+          <div class="input-group d-none">
+            <label for="">ID :</label>
+            <input type="text" name="userID" value="<%= userEdit.id %>" />
+          </div>
+          <div class="input-group">
+            <label for="">Are you sure to delete this user with email :</label>
+            <input type="text" name="email" value="<%= userEdit.email %>" />
+          </div>
+          <div>
+            <button>Confirm</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
