@@ -5,7 +5,6 @@ const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
 const mysql = require("mysql2");
 const connection = require("./config/database");
-const Kitten = require("../src/models/Kitten");
 
 const app = express();
 const port = process.env.PORT || 8888;
@@ -25,9 +24,6 @@ app.use("/", webRoutes);
 // connection.query("SELECT * FROM Users u", function (err, results, fields) {
 //   console.log("results= ", results);
 // });
-
-const cat = new Kitten({ name: "Hoidanit model" });
-cat.save();
 
 //Only execute app if connecting DB successfully
 (async () => {
