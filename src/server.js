@@ -5,7 +5,7 @@ const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
 const mysql = require("mysql2");
 const connection = require("./config/database");
-const mongoose = require("mongoose");
+const Kitten = require("../src/models/Kitten");
 
 const app = express();
 const port = process.env.PORT || 8888;
@@ -26,12 +26,7 @@ app.use("/", webRoutes);
 //   console.log("results= ", results);
 // });
 
-//Create scheme
-const kittySchema = new mongoose.Schema({
-  name: String,
-});
-const Kitten = mongoose.model("Kitten", kittySchema);
-const cat = new Kitten({ name: "Hoidanit" });
+const cat = new Kitten({ name: "Hoidanit model" });
 cat.save();
 
 //Only execute app if connecting DB successfully
