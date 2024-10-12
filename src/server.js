@@ -25,9 +25,14 @@ app.use("/", webRoutes);
 //   console.log("results= ", results);
 // });
 
-//test connection
-connection();
-
-app.listen(port, hostname, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+(async () => {
+  try {
+    //test connection
+    await connection();
+    app.listen(port, hostname, () => {
+      console.log(`Backend app listening on port ${port}`);
+    });
+  } catch (error) {
+    console.log(">>>Error connect to DB");
+  }
+})();
