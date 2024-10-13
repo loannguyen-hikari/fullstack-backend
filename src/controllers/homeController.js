@@ -43,18 +43,13 @@ const postUpdateUser = async (req, res) => {
 
 const postDeleteUser = async (req, res) => {
   const userID = req.params.id;
-  let results = await getUserByID(userID);
-
-  let user = results && results.length > 0 ? results[0] : {};
+  let user = await User.findById(userID);
   res.render("delete.ejs", { userEdit: user });
 };
 
 const removeUser = async (req, res) => {
   const userID = req.body.userID;
-  let [results, fields] = await connection.query(
-    `DELETE FROM Users WHERE id=?`,
-    [userID]
-  );
+  await User.deleteOne({ _id: userID });
   res.redirect("/");
 };
 
