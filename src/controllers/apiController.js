@@ -9,6 +9,22 @@ const getUsersAPI = async (req, res) => {
   });
 };
 
+const postCreateUserAPI = async (req, res) => {
+  let { email, myname, city } = req.body;
+
+  let user = await User.create({
+    email: email,
+    name: myname,
+    city: city,
+  });
+
+  return res.status(200).json({
+    errorCode: 0,
+    data: user,
+  });
+};
+
 module.exports = {
   getUsersAPI,
+  postCreateUserAPI 
 };
