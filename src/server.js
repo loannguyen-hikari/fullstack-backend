@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
-const mysql = require("mysql2");
+const apiRoutes = require("./routes/api");
 const connection = require("./config/database");
 
 const app = express();
@@ -19,6 +19,7 @@ configViewEngine(app);
 
 //declare routes
 app.use("/", webRoutes);
+app.use("/v1/api/", apiRoutes);
 
 //simple query
 // connection.query("SELECT * FROM Users u", function (err, results, fields) {
