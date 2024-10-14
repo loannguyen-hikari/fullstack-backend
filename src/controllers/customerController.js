@@ -3,6 +3,7 @@ const {
   createCustomerService,
   createArrayCustomerService,
   getCustomerService,
+  updateCustomerService,
 } = require("../services/customerService");
 
 module.exports = {
@@ -59,5 +60,13 @@ module.exports = {
         data: customers,
       });
     }
+  },
+  putCustomerAPI: async (req, res) => {
+    let { id, name, email, address } = req.body;
+    let result = await updateCustomerService(id, name, email, address);
+    return res.status(200).json({
+      EC: 0,
+      data: result,
+    });
   },
 };

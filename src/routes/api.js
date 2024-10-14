@@ -12,6 +12,7 @@ const {
   postCreateCustomerAPI,
   postCreateArrayCustomerAPI,
   getCustomerAPI,
+  putCustomerAPI,
 } = require("../controllers/customerController");
 
 //routes for users
@@ -27,5 +28,6 @@ routerAPI.post("/file", postUploadSingleAPI);
 routerAPI.post("/customers", postCreateCustomerAPI);
 routerAPI.post("/customers-many", postCreateArrayCustomerAPI);
 routerAPI.get("/customers", getCustomerAPI);
+routerAPI.put("/customers", putCustomerAPI);
 
 module.exports = routerAPI;
