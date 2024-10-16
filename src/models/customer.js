@@ -14,7 +14,7 @@ const customerSchema = new mongoose.Schema(
     description: String,
   },
   {
-    timestamps: true,
+    timestamps: true, // createdAt, updatedAt
   }
 );
 // Override all methods

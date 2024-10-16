@@ -49,16 +49,23 @@ module.exports = {
     }
   },
   getCustomerAPI: async (req, res) => {
-    let customers = await getCustomerService();
-    if (customers) {
+    let { limit, page } = req.query;
+    let result = null;
+    if (limit && page) {
+      result = await getCustomerService(limit, page);
+    } else {
+      result = await getCustomerService();
+    }
+
+    if (result) {
       return res.status(200).json({
         EC: 0,
-        data: customers,
+        data: result,
       });
     } else {
       return res.status(200).json({
         EC: -1,
-        data: customers,
+        data: result,
       });
     }
   },
